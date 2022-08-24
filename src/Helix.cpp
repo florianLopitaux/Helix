@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "SDL_image.h"
+
 
 // FIELDS
 SDL_Window *window;
@@ -17,7 +19,7 @@ int Helix::hlx_init(const std::string & windowName, const unsigned windowWidth, 
     }
 
     // Window initialization
-    window = SDL_CreateWindow(windowName,
+    window = SDL_CreateWindow(windowName.c_str(),
                               SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                               windowWidth, windowHeight,
                               SDL_WINDOW_SHOWN);
@@ -48,6 +50,16 @@ int Helix::hlx_init(const std::string & windowName, const unsigned windowWidth, 
             return -1;
         }
     }
+
+    return 0;
+}
+
+void Helix::hlx_beginDraw() {
+    SDL_RenderClear(renderer);
+}
+
+void Helix::hlx_endDraw() {
+    SDL_RenderPresent(renderer);
 }
 
 void Helix::hlx_quit() {
@@ -71,4 +83,23 @@ SDL_Texture* Helix::loadTexture(const std::string & imagePath) {
     }
 
     return texture;
+}
+
+void Helix::setColor(const int red, const int green, const int blue, const int alpha) {
+    // Assertions
+    if ((red < 0 || red > 255) ||
+        (green < 0 || green > 255) ||
+        (blue < 0 || blue > 255) ||
+        (alpha < 0 || alpha > 255)) {
+
+        std::cout << "Error ! The arguments value is out of range ! It can only take values between 0 and 255."
+                  << std::endl;
+        return;
+    }
+
+    SDL_SetRenderDrawColor(renderer, red, green, blue, alpha);
+}
+
+void Helix::drawLine(const int x1, const int y1, const int x2, const int y2) {
+    SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
 }
