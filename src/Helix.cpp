@@ -103,3 +103,15 @@ void Helix::setColor(const int red, const int green, const int blue, const int a
 void Helix::drawLine(const int x1, const int y1, const int x2, const int y2) {
     SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
 }
+
+void Helix::drawEmptyRectangle(const int x, const int y, const unsigned width, const unsigned height) {
+    SDL_Rect rect = {x, y, (int)width, (int)height};
+
+    SDL_RenderDrawRect(renderer, &rect);
+}
+
+void Helix::drawFillRectangle(const int x, const int y, const unsigned width, const unsigned height) {
+    SDL_Rect rect = {x, y, (int)width, (int)height};
+
+    SDL_RenderFillRect(renderer, &rect);
+}

@@ -19,6 +19,9 @@ int main(int argc, char *argv[]) {
         Helix::setColor(180, 37, 98);
         Helix::drawLine(10, 10, 630, 470);
 
+        Helix::drawEmptyRectangle(40, 17, 30, 15);
+        Helix::drawFillRectangle(100, 17, 18, 35);
+
         Helix::hlx_endDraw();
     }
 
