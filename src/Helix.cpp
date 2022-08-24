@@ -8,7 +8,7 @@ SDL_Window *window;
 SDL_Renderer *renderer;
 
 
-// FUNCTIONS
+// SYSTEM FUNCTIONS
 int Helix::hlx_init(const std::string & windowName, const unsigned windowWidth, const unsigned windowHeight) {
     // SDL initialization
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -56,4 +56,19 @@ void Helix::hlx_quit() {
 
     IMG_Quit();
     SDL_Quit();
+}
+
+
+// GRAPHIC FUNCTIONS
+SDL_Texture* Helix::loadTexture(const std::string & imagePath) {
+    SDL_Texture *texture = NULL;
+
+    texture = IMG_LoadTexture(renderer, imagePath.c_str());
+
+    if (texture == NULL) {
+        std::cout << "Error ! Unable to create texture from " << imagePath << std::endl
+                  << "SDL_image error : " << IMG_GetError() << std::endl;
+    }
+
+    return texture;
 }
