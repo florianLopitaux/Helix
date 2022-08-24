@@ -4,6 +4,8 @@
 #include <string>
 
 #include "SDL.h"
+#include "utils/Vector2D.h"
+
 
 namespace Helix {
     // SYSTEM FUNCTIONS
@@ -14,9 +16,9 @@ namespace Helix {
 
     // GRAPHIC FUNCTIONS
     void setColor(const int red, const int green, const int blue, const int alpha = 255);
-    void drawLine(const int x1, const int y1, const int x2, const int y2);
-    void drawEmptyRectangle(const int x, const int y, const unsigned width, const unsigned height);
-    void drawFillRectangle(const int x, const int y, const unsigned width, const unsigned height);
+    void drawLine(const Vector2D & pos1, const Vector2D & pos2);
+    void drawEmptyRectangle(const Vector2D & pos, const unsigned width, const unsigned height);
+    void drawFillRectangle(const Vector2D & pos, const unsigned width, const unsigned height);
 
     SDL_Texture* loadTexture(const std::string & imagePath);
 }
