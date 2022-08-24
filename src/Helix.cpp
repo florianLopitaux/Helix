@@ -3,10 +3,12 @@
 #include <iostream>
 
 
+// FIELDS
 SDL_Window *window;
 SDL_Renderer *renderer;
 
 
+// FUNCTIONS
 int Helix::hlx_init(const std::string & windowName, const unsigned windowWidth, const unsigned windowHeight) {
     // SDL initialization
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
@@ -46,4 +48,12 @@ int Helix::hlx_init(const std::string & windowName, const unsigned windowWidth, 
             return -1;
         }
     }
+}
+
+void Helix::hlx_quit() {
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+
+    IMG_Quit();
+    SDL_Quit();
 }
