@@ -12,6 +12,7 @@ namespace Helix {
     int hlx_init(const std::string & windowName, const unsigned windowWidth, const unsigned windowHeight);
     void hlx_beginDraw();
     void hlx_endDraw();
+    void hlx_freeTexture(SDL_Texture *texture);
     void hlx_quit();
 
     // GRAPHIC FUNCTIONS

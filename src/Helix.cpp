@@ -62,6 +62,12 @@ void Helix::hlx_endDraw() {
     SDL_RenderPresent(renderer);
 }
 
+void Helix::hlx_freeTexture(SDL_Texture *texture) {
+    if (texture != NULL) {
+        SDL_DestroyTexture(texture);
+    }
+}
+
 void Helix::hlx_quit() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
