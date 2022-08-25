@@ -86,7 +86,7 @@ void Helix::hlx_quit() {
 
 
 // GRAPHIC FUNCTIONS
-SDL_Texture* Helix::loadTexture(const std::string & imagePath) {
+SDL_Texture* Helix::Graphics::loadTexture(const std::string & imagePath) {
     SDL_Texture *texture = NULL;
 
     texture = IMG_LoadTexture(renderer, imagePath.c_str());
@@ -102,7 +102,7 @@ SDL_Texture* Helix::loadTexture(const std::string & imagePath) {
     return texture;
 }
 
-void Helix::setColor(const int red, const int green, const int blue, const int alpha) {
+void Helix::Graphics::setColor(const int red, const int green, const int blue, const int alpha) {
     // Assertions
     if ((red < 0 || red > 255) ||
         (green < 0 || green > 255) ||
@@ -117,17 +117,17 @@ void Helix::setColor(const int red, const int green, const int blue, const int a
     SDL_SetRenderDrawColor(renderer, red, green, blue, alpha);
 }
 
-void Helix::drawLine(const Helix::Utils::Vector2D & pos1, const Helix::Utils::Vector2D & pos2) {
+void Helix::Graphics::drawLine(const Helix::Utils::Vector2D & pos1, const Helix::Utils::Vector2D & pos2) {
     SDL_RenderDrawLine(renderer, pos1.getX(), pos1.getY(), pos2.getX(), pos2.getY());
 }
 
-void Helix::drawEmptyRectangle(const Helix::Utils::Vector2D & pos, const unsigned width, const unsigned height) {
+void Helix::Graphics::drawEmptyRectangle(const Helix::Utils::Vector2D & pos, const unsigned width, const unsigned height) {
     SDL_Rect rect = {pos.getX(), pos.getY(), (int)width, (int)height};
 
     SDL_RenderDrawRect(renderer, &rect);
 }
 
-void Helix::drawFillRectangle(const Helix::Utils::Vector2D & pos, const unsigned width, const unsigned height) {
+void Helix::Graphics::drawFillRectangle(const Helix::Utils::Vector2D & pos, const unsigned width, const unsigned height) {
     SDL_Rect rect = {pos.getX(), pos.getY(), (int)width, (int)height};
 
     SDL_RenderFillRect(renderer, &rect);

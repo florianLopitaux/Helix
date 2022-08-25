@@ -13,14 +13,14 @@ int main(int argc, char *argv[]) {
             }
         }
 
-        Helix::setColor(0, 0, 0);
+        Helix::Graphics::setColor(0, 0, 0);
         Helix::hlx_beginDraw();
 
-        Helix::setColor(180, 37, 98);
-        Helix::drawLine(Helix::Utils::Vector2D(10, 10), Helix::Utils::Vector2D(630, 470));
+        Helix::Graphics::setColor(180, 37, 98);
+        Helix::Graphics::drawLine(Helix::Utils::Vector2D(10, 10), Helix::Utils::Vector2D(630, 470));
 
-        Helix::drawEmptyRectangle(Helix::Utils::Vector2D(40, 17), 30, 15);
-        Helix::drawFillRectangle(Helix::Utils::Vector2D(100, 17), 18, 35);
+        Helix::Graphics::drawEmptyRectangle(Helix::Utils::Vector2D(40, 17), 30, 15);
+        Helix::Graphics::drawFillRectangle(Helix::Utils::Vector2D(100, 17), 18, 35);
 
         Helix::hlx_endDraw();
     }
