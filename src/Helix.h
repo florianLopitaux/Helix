@@ -8,6 +8,8 @@
 
 
 namespace Helix {
+    #define FPS 60
+
     // SYSTEM FUNCTIONS
     int hlx_init(const std::string & windowName, const unsigned windowWidth, const unsigned windowHeight);
     void hlx_beginDraw();
