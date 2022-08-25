@@ -1,6 +1,8 @@
 #include "Helix.h"
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 #include "SDL_image.h"
 
@@ -8,6 +10,7 @@
 // FIELDS
 SDL_Window *window;
 SDL_Renderer *renderer;
+std::vector<SDL_Texture*> resources;
 
 
 // SYSTEM FUNCTIONS
@@ -64,11 +67,16 @@ void Helix::hlx_endDraw() {
 
 void Helix::hlx_freeTexture(SDL_Texture *texture) {
     if (texture != NULL) {
+        resources.erase(std::remove(resources.begin(), resources.end(), texture), resources.end());
         SDL_DestroyTexture(texture);
     }
 }
 
 void Helix::hlx_quit() {
+    for (SDL_Texture *currentTexture : resources) {
+        SDL_DestroyTexture(currentTexture);
+    }
+
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 
@@ -86,6 +94,9 @@ SDL_Texture* Helix::loadTexture(const std::string & imagePath) {
     if (texture == NULL) {
         std::cout << "Error ! Unable to create texture from " << imagePath << std::endl
                   << "SDL_image error : " << IMG_GetError() << std::endl;
+
+    } else {
+        resources.push_back(texture);
     }
 
     return texture;
