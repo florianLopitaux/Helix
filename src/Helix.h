@@ -17,9 +17,9 @@ namespace Helix {
 
     // GRAPHIC FUNCTIONS
     void setColor(const int red, const int green, const int blue, const int alpha = 255);
-    void drawLine(const Vector2D & pos1, const Vector2D & pos2);
-    void drawEmptyRectangle(const Vector2D & pos, const unsigned width, const unsigned height);
-    void drawFillRectangle(const Vector2D & pos, const unsigned width, const unsigned height);
+    void drawLine(const Utils::Vector2D & pos1, const Utils::Vector2D & pos2);
+    void drawEmptyRectangle(const Utils::Vector2D & pos, const unsigned width, const unsigned height);
+    void drawFillRectangle(const Utils::Vector2D & pos, const unsigned width, const unsigned height);
 
     SDL_Texture* loadTexture(const std::string & imagePath);
 }

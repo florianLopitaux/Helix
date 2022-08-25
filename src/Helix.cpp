@@ -117,17 +117,17 @@ void Helix::setColor(const int red, const int green, const int blue, const int a
     SDL_SetRenderDrawColor(renderer, red, green, blue, alpha);
 }
 
-void Helix::drawLine(const Vector2D & pos1, const Vector2D & pos2) {
+void Helix::drawLine(const Helix::Utils::Vector2D & pos1, const Helix::Utils::Vector2D & pos2) {
     SDL_RenderDrawLine(renderer, pos1.getX(), pos1.getY(), pos2.getX(), pos2.getY());
 }
 
-void Helix::drawEmptyRectangle(const Vector2D & pos, const unsigned width, const unsigned height) {
+void Helix::drawEmptyRectangle(const Helix::Utils::Vector2D & pos, const unsigned width, const unsigned height) {
     SDL_Rect rect = {pos.getX(), pos.getY(), (int)width, (int)height};
 
     SDL_RenderDrawRect(renderer, &rect);
 }
 
-void Helix::drawFillRectangle(const Vector2D & pos, const unsigned width, const unsigned height) {
+void Helix::drawFillRectangle(const Helix::Utils::Vector2D & pos, const unsigned width, const unsigned height) {
     SDL_Rect rect = {pos.getX(), pos.getY(), (int)width, (int)height};
 
     SDL_RenderFillRect(renderer, &rect);

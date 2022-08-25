@@ -4,10 +4,10 @@
 // CONSTRUCTORS
 Helix::Sprite::Sprite(const std::string & imagePath) {
     this->texture = Helix::loadTexture(imagePath);
-    this->position = Helix::Vector2D();
+    this->position = Helix::Utils::Vector2D();
 }
 
-Helix::Sprite::Sprite(const std::string & imagePath, const Vector2D & position) {
+Helix::Sprite::Sprite(const std::string & imagePath, const Helix::Utils::Vector2D & position) {
     this->texture = Helix::loadTexture(imagePath);
     this->position = position;
 }
@@ -24,12 +24,12 @@ SDL_Texture* Helix::Sprite::getTexture() const {
     return this->texture;
 }
 
-Helix::Vector2D Helix::Sprite::getPosition() const {
+Helix::Utils::Vector2D Helix::Sprite::getPosition() const {
     return this->position;
 }
 
 
 // SETTER
-void Helix::Sprite::setPosition(const Vector2D & vector) {
+void Helix::Sprite::setPosition(const Helix::Utils::Vector2D & vector) {
     this->position = vector;
 }

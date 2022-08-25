@@ -17,10 +17,10 @@ int main(int argc, char *argv[]) {
         Helix::hlx_beginDraw();
 
         Helix::setColor(180, 37, 98);
-        Helix::drawLine(Helix::Vector2D(10, 10), Helix::Vector2D(630, 470));
+        Helix::drawLine(Helix::Utils::Vector2D(10, 10), Helix::Utils::Vector2D(630, 470));
 
-        Helix::drawEmptyRectangle(Helix::Vector2D(40, 17), 30, 15);
-        Helix::drawFillRectangle(Helix::Vector2D(100, 17), 18, 35);
+        Helix::drawEmptyRectangle(Helix::Utils::Vector2D(40, 17), 30, 15);
+        Helix::drawFillRectangle(Helix::Utils::Vector2D(100, 17), 18, 35);
 
         Helix::hlx_endDraw();
     }
