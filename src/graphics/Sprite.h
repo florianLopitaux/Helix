@@ -25,12 +25,18 @@ namespace Helix {
 
                 // GETTERS
                 SDL_Texture* getTexture() const;
+
+                int getX() const;
+                int getY() const;
                 Utils::Vector2D getPosition() const;
+
                 int getWidth() const;
                 int getHeight() const;
                 std::pair<int, int> getSize() const;
 
                 // SETTER
+                void setX(const int x);
+                void setY(const int y);
                 void setPosition(const Utils::Vector2D & vector);
         };
     }

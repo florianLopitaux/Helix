@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Graphics/Sprite.h"
+#include "graphics/Sprite.h"
 
 
 namespace Helix {

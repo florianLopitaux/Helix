@@ -30,6 +30,14 @@ SDL_Texture* Helix::Graphics::Sprite::getTexture() const {
     return this->texture;
 }
 
+int Helix::Graphics::Sprite::getX() const {
+    return this->position.getX();
+}
+
+int Helix::Graphics::Sprite::getY() const {
+    return this->position.getY();
+}
+
 Helix::Utils::Vector2D Helix::Graphics::Sprite::getPosition() const {
     return this->position;
 }
@@ -48,6 +56,14 @@ std::pair<int, int> Helix::Graphics::Sprite::getSize() const {
 
 
 // SETTER
+void Helix::Graphics::Sprite::setX(const int x) {
+    this->position.setX(x);
+}
+
+void Helix::Graphics::Sprite::setY(const int y) {
+    this->position.setY(y);
+}
+
 void Helix::Graphics::Sprite::setPosition(const Helix::Utils::Vector2D & vector) {
     this->position = vector;
 }

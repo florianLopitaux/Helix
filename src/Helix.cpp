@@ -145,7 +145,7 @@ SDL_Texture* Helix::Graphics::loadTexture(const std::string & imagePath) {
 }
 
 void Helix::Graphics::draw(const Helix::Graphics::Sprite & sprite) {
-    SDL_Rect rectDest = {sprite.getPosition().getX(), sprite.getPosition().getY(), sprite.getWidth(), sprite.getHeight()};
+    SDL_Rect rectDest = {sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight()};
 
     if (SDL_RenderCopy(renderer, sprite.getTexture(), NULL, &rectDest) != 0) {
         std::cout << "Error ! Impossible to draw a texture" << std::endl

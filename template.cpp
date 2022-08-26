@@ -6,6 +6,7 @@ int main(int argc, char *argv[]) {
     Helix::hlx_init("template project", 640, 480);
 
     Helix::Graphics::Sprite background = Helix::Graphics::Sprite("assets/background.jpg");
+    Helix::Graphics::Sprite secondBackground = background; // second background to infinite scrolling
 
     while (true) {
         SDL_Event event;
@@ -15,10 +16,21 @@ int main(int argc, char *argv[]) {
             }
         }
 
+        // Update background
+        background.setX(background.getX() - 3);
+
+        if (background.getX() <= -background.getWidth()) {
+            background.setX(0);
+        }
+
+        secondBackground.setX(background.getX() + background.getWidth());
+
+
         Helix::Graphics::setColor(0, 0, 0);
         Helix::hlx_beginDraw();
 
         Helix::Graphics::draw(background);
+        Helix::Graphics::draw(secondBackground);
 
         Helix::Graphics::setColor(180, 37, 98);
         Helix::Graphics::drawLine(Helix::Utils::Vector2D(10, 10), Helix::Utils::Vector2D(630, 470));
