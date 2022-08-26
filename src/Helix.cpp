@@ -97,22 +97,6 @@ void Helix::hlx_quit() {
 
 
 // GRAPHIC FUNCTIONS
-SDL_Texture* Helix::Graphics::loadTexture(const std::string & imagePath) {
-    SDL_Texture *texture = NULL;
-
-    texture = IMG_LoadTexture(renderer, imagePath.c_str());
-
-    if (texture == NULL) {
-        std::cout << "Error ! Unable to create texture from " << imagePath << std::endl
-                  << "SDL_image error : " << IMG_GetError() << std::endl;
-
-    } else {
-        resources.push_back(texture);
-    }
-
-    return texture;
-}
-
 void Helix::Graphics::setColor(const int red, const int green, const int blue, const int alpha) {
     // Assertions
     if ((red < 0 || red > 255) ||
@@ -142,4 +126,29 @@ void Helix::Graphics::drawFillRectangle(const Helix::Utils::Vector2D & pos, cons
     SDL_Rect rect = {pos.getX(), pos.getY(), (int)width, (int)height};
 
     SDL_RenderFillRect(renderer, &rect);
+}
+
+SDL_Texture* Helix::Graphics::loadTexture(const std::string & imagePath) {
+    SDL_Texture *texture = NULL;
+
+    texture = IMG_LoadTexture(renderer, imagePath.c_str());
+
+    if (texture == NULL) {
+        std::cout << "Error ! Unable to create texture from " << imagePath << std::endl
+                  << "SDL_image error : " << IMG_GetError() << std::endl;
+
+    } else {
+        resources.push_back(texture);
+    }
+
+    return texture;
+}
+
+void Helix::Graphics::draw(const Helix::Graphics::Sprite & sprite) {
+    SDL_Rect rectDest = {sprite.getPosition().getX(), sprite.getPosition().getY(), sprite.getWidth(), sprite.getHeight()};
+
+    if (SDL_RenderCopy(renderer, sprite.getTexture(), NULL, &rectDest) != 0) {
+        std::cout << "Error ! Impossible to draw a texture" << std::endl
+                  << "SDL error : " << SDL_GetError() << std::endl;
+    }
 }

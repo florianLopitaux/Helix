@@ -3,17 +3,17 @@
 
 #include <string>
 
-#include "../Helix.h"
-
+#include "SDL.h"
+#include "../utils/Vector2D.h"
 
 namespace Helix {
     namespace Graphics {
-        class Sprite
-        {
+        class Sprite {
             private:
                 // FIELDS
                 SDL_Texture *texture;
                 Utils::Vector2D position;
+                int width, height;
 
             public:
                 // CONSTRUCTORS
@@ -26,6 +26,9 @@ namespace Helix {
                 // GETTERS
                 SDL_Texture* getTexture() const;
                 Utils::Vector2D getPosition() const;
+                int getWidth() const;
+                int getHeight() const;
+                std::pair<int, int> getSize() const;
 
                 // SETTER
                 void setPosition(const Utils::Vector2D & vector);

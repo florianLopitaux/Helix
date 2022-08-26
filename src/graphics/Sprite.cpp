@@ -1,15 +1,21 @@
 #include "Sprite.h"
 
+#include "../Helix.h"
+
 
 // CONSTRUCTORS
 Helix::Graphics::Sprite::Sprite(const std::string & imagePath) {
     this->texture = Helix::Graphics::loadTexture(imagePath);
     this->position = Helix::Utils::Vector2D();
+
+    SDL_QueryTexture(this->texture, NULL, NULL, &this->width, &this->height);
 }
 
 Helix::Graphics::Sprite::Sprite(const std::string & imagePath, const Helix::Utils::Vector2D & position) {
     this->texture = Helix::Graphics::loadTexture(imagePath);
     this->position = position;
+
+    SDL_QueryTexture(this->texture, NULL, NULL, &this->width, &this->height);
 }
 
 
@@ -26,6 +32,18 @@ SDL_Texture* Helix::Graphics::Sprite::getTexture() const {
 
 Helix::Utils::Vector2D Helix::Graphics::Sprite::getPosition() const {
     return this->position;
+}
+
+int Helix::Graphics::Sprite::getWidth() const {
+    return this->width;
+}
+
+int Helix::Graphics::Sprite::getHeight() const {
+    return this->height;
+}
+
+std::pair<int, int> Helix::Graphics::Sprite::getSize() const {
+    return std::make_pair(this->width, this->height);
 }
 
 

@@ -3,8 +3,7 @@
 
 #include <string>
 
-#include "SDL.h"
-#include "utils/Vector2D.h"
+#include "Graphics/Sprite.h"
 
 
 namespace Helix {
@@ -25,6 +24,7 @@ namespace Helix {
         void drawFillRectangle(const Utils::Vector2D & pos, const unsigned width, const unsigned height);
 
         SDL_Texture* loadTexture(const std::string & imagePath);
+        void draw(const Sprite & sprite);
     }
 }
 
