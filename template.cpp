@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "src/Helix.h"
 #include "SDL_image.h"
 
@@ -11,6 +13,14 @@ int main(int argc, char *argv[]) {
     while (true) {
         if (Helix::hlx_update() != 0) {
             break;
+        }
+
+        // Test if keyboard functions works correctly
+        if (Helix::hlx_isKeyDown(SDLK_b)) {
+            std::cout << "The 'b' key is down !" << std::endl;
+
+        } else if (Helix::hlx_isKeyUp(SDLK_b)) {
+            std::cout << "The 'b' key is up !" << std::endl;
         }
 
         // Update background
@@ -30,8 +40,8 @@ int main(int argc, char *argv[]) {
         Helix::Graphics::draw(secondBackground);
 
         Helix::Graphics::setColor(180, 37, 98);
-        Helix::Graphics::drawLine(Helix::Utils::Vector2D(10, 10), Helix::Utils::Vector2D(630, 470));
 
+        Helix::Graphics::drawLine(Helix::Utils::Vector2D(10, 10), Helix::Utils::Vector2D(630, 470));
         Helix::Graphics::drawEmptyRectangle(Helix::Utils::Vector2D(40, 17), 30, 15);
         Helix::Graphics::drawFillRectangle(Helix::Utils::Vector2D(100, 17), 18, 35);
 

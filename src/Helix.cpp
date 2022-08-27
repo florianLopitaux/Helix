@@ -63,6 +63,7 @@ int Helix::hlx_init(const std::string & windowName, const unsigned windowWidth, 
 int Helix::hlx_update() {
     frameStart = SDL_GetTicks();
 
+    events.clear();
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
@@ -72,7 +73,7 @@ int Helix::hlx_update() {
             events.push_back(event);
         }
     }
-    
+
     return 0;
 }
 
@@ -108,6 +109,26 @@ void Helix::hlx_quit() {
 
     IMG_Quit();
     SDL_Quit();
+}
+
+bool Helix::hlx_isKeyDown(const SDL_Keycode & key) {
+    for (const SDL_Event & event : events) {
+        if (event.type == SDL_KEYDOWN && event.key.keysym.sym == key) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Helix::hlx_isKeyUp(const SDL_Keycode & key) {
+    for (const SDL_Event & event : events) {
+        if (event.type == SDL_KEYUP && event.key.keysym.sym == key) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 

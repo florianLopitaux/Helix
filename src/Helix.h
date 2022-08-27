@@ -17,6 +17,9 @@ namespace Helix {
     void hlx_freeTexture(SDL_Texture *texture);
     void hlx_quit();
 
+    bool hlx_isKeyDown(const SDL_Keycode & key);
+    bool hlx_isKeyUp(const SDL_Keycode & key);
+
     // GRAPHIC FUNCTIONS
     namespace Graphics {
         void setColor(const int red, const int green, const int blue, const int alpha = 255);
