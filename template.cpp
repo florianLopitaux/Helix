@@ -9,11 +9,8 @@ int main(int argc, char *argv[]) {
     Helix::Graphics::Sprite secondBackground = background; // second background to infinite scrolling
 
     while (true) {
-        SDL_Event event;
-        if (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                break;
-            }
+        if (Helix::hlx_update() != 0) {
+            break;
         }
 
         // Update background

@@ -11,6 +11,7 @@ namespace Helix {
 
     // SYSTEM FUNCTIONS
     int hlx_init(const std::string & windowName, const unsigned windowWidth, const unsigned windowHeight);
+    int hlx_update();
     void hlx_beginDraw();
     void hlx_endDraw();
     void hlx_freeTexture(SDL_Texture *texture);

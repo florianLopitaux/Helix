@@ -11,6 +11,7 @@
 SDL_Window *window;
 SDL_Renderer *renderer;
 Uint32 frameStart;
+std::vector<SDL_Event> events;
 std::vector<SDL_Texture*> resources;
 
 
@@ -55,7 +56,23 @@ int Helix::hlx_init(const std::string & windowName, const unsigned windowWidth, 
         }
     }
 
+    frameStart = 0;
+    return 0;
+}
+
+int Helix::hlx_update() {
     frameStart = SDL_GetTicks();
+
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            return -1;
+
+        } else {
+            events.push_back(event);
+        }
+    }
+    
     return 0;
 }
 
@@ -72,8 +89,6 @@ void Helix::hlx_endDraw() {
     if (1000 / FPS > frameTime) {
         SDL_Delay(1000 / FPS - frameTime);
     }
-
-    frameStart = SDL_GetTicks();
 }
 
 void Helix::hlx_freeTexture(SDL_Texture *texture) {
