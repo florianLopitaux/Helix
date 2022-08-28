@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "graphics/Sprite.h"
+#include "graphics/AnimatedSprite.h"
 
 
 namespace Helix {
@@ -29,6 +29,7 @@ namespace Helix {
 
         SDL_Texture* loadTexture(const std::string & imagePath);
         void draw(const Sprite & sprite);
+        void drawSquad(const AnimatedSprite & animatedSprite);
     }
 }
 

@@ -188,3 +188,12 @@ void Helix::Graphics::draw(const Helix::Graphics::Sprite & sprite) {
                   << "SDL error : " << SDL_GetError() << std::endl;
     }
 }
+
+void Helix::Graphics::drawSquad(const Helix::Graphics::AnimatedSprite & sprite) {
+    SDL_Rect rectDest = {sprite.getX(), sprite.getY(), (int)sprite.getFrameWidth(), (int)sprite.getFrameHeight()};
+
+    if (SDL_RenderCopy(renderer, sprite.getTexture(), &sprite.getCurrentSprite(), &rectDest) != 0) {
+        std::cout << "Error ! Impossible to draw a texture" << std::endl
+                  << "SDL error : " << SDL_GetError() << std::endl;
+    }
+}
