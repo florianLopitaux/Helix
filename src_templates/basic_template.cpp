@@ -5,7 +5,9 @@
 
 
 int main(int argc, char *argv[]) {
-    Helix::hlx_init("template project", 640, 480);
+    if (Helix::hlx_init("template project", 640, 480) != 0) {
+        return -1;
+    }
 
     Helix::Graphics::Sprite background = Helix::Graphics::Sprite("assets/background.jpg");
     Helix::Graphics::Sprite secondBackground = background; // second background to infinite scrolling
