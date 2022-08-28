@@ -10,7 +10,8 @@
 // FIELDS
 SDL_Window *window;
 SDL_Renderer *renderer;
-Uint32 frameStart;
+Uint32 oldSDL_GetTicks;
+Uint32 deltaTime;
 std::vector<SDL_Event> events;
 std::vector<SDL_Texture*> resources;
 
@@ -56,12 +57,25 @@ int Helix::hlx_init(const std::string & windowName, const unsigned windowWidth, 
         }
     }
 
-    frameStart = 0;
+    oldSDL_GetTicks = 0;
     return 0;
 }
 
+void Helix::hlx_quit() {
+    for (SDL_Texture *currentTexture : resources) {
+        SDL_DestroyTexture(currentTexture);
+    }
+
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+
+    IMG_Quit();
+    SDL_Quit();
+}
+
 int Helix::hlx_update() {
-    frameStart = SDL_GetTicks();
+    deltaTime = SDL_GetTicks() - oldSDL_GetTicks;
+    oldSDL_GetTicks = SDL_GetTicks();
 
     events.clear();
     SDL_Event event;
@@ -77,6 +91,10 @@ int Helix::hlx_update() {
     return 0;
 }
 
+Uint32 Helix::hlx_getDeltaTime() {
+    return deltaTime;
+}
+
 void Helix::hlx_beginDraw() {
     SDL_RenderClear(renderer);
 }
@@ -85,10 +103,8 @@ void Helix::hlx_endDraw() {
     SDL_RenderPresent(renderer);
 
     // Limit framerate
-    int frameTime = SDL_GetTicks() - frameStart;
-
-    if (1000 / FPS > frameTime) {
-        SDL_Delay(1000 / FPS - frameTime);
+    if (1000 / FPS > deltaTime) {
+        SDL_Delay(1000 / FPS - deltaTime);
     }
 }
 
@@ -97,18 +113,6 @@ void Helix::hlx_freeTexture(SDL_Texture *texture) {
         resources.erase(std::remove(resources.begin(), resources.end(), texture), resources.end());
         SDL_DestroyTexture(texture);
     }
-}
-
-void Helix::hlx_quit() {
-    for (SDL_Texture *currentTexture : resources) {
-        SDL_DestroyTexture(currentTexture);
-    }
-
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-
-    IMG_Quit();
-    SDL_Quit();
 }
 
 bool Helix::hlx_isKeyDown(const SDL_Keycode & key) {

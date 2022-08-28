@@ -10,7 +10,7 @@ namespace Helix {
     namespace Graphics {
         struct Animation {
             unsigned startRow, startColumn, endRow, endColumn;
-            Uint32 frameDuree;
+            float frameDuree;
             bool isRepeating;
 
             bool operator==(const Animation & other) const;
@@ -44,7 +44,7 @@ namespace Helix {
                 // METHODS
                 void addNewAnimation(const std::string & name, const Animation & animation);
                 void launchAnimation(const std::string & animationName);
-                void update();
+                void updateAnimation(const Uint32 & deltaTime);
         };
     }
 }

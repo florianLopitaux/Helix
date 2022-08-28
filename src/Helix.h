@@ -11,11 +11,14 @@ namespace Helix {
 
     // SYSTEM FUNCTIONS
     int hlx_init(const std::string & windowName, const unsigned windowWidth, const unsigned windowHeight);
+    void hlx_quit();
+
     int hlx_update();
+    Uint32 hlx_getDeltaTime();
+
     void hlx_beginDraw();
     void hlx_endDraw();
     void hlx_freeTexture(SDL_Texture *texture);
-    void hlx_quit();
 
     bool hlx_isKeyDown(const SDL_Keycode & key);
     bool hlx_isKeyUp(const SDL_Keycode & key);

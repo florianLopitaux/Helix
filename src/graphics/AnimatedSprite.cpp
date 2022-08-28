@@ -70,34 +70,35 @@ void Helix::Graphics::AnimatedSprite::launchAnimation(const std::string & animat
     }
 
     this->currentAnimation = animations[animationName];
+    this->currentFrameTime = 0;
     this->isFinished = false;
 
-    this->source.x = this->currentAnimation.startRow * this->frameWidth;
-    this->source.y = this->currentAnimation.startColumn * this->frameHeight;
+    this->source.x = this->currentAnimation.startColumn * this->frameWidth;
+    this->source.y = this->currentAnimation.startRow * this->frameHeight;
     this->source.w = this->frameWidth;
     this->source.h = this->frameHeight;
 }
 
-void Helix::Graphics::AnimatedSprite::update() {
-    this->currentFrameTime += SDL_GetTicks() - this->currentFrameTime;
+void Helix::Graphics::AnimatedSprite::updateAnimation(const Uint32 & deltaTime) {
+    this->currentFrameTime += deltaTime;
 
     if (this->currentFrameTime >= this->currentAnimation.frameDuree) {
         this->currentFrameTime = 0;
         this->source.x += this->frameWidth;
 
-        if (this->source.x > this->currentAnimation.endRow * this->frameWidth) {
-            this->source.x = this->currentAnimation.startRow;
+        if (this->source.x > this->currentAnimation.endColumn * this->frameWidth) {
+            this->source.x = this->currentAnimation.startColumn * this->frameWidth;
             this->source.y += this->frameHeight;
 
-            if (this->source.y > this->currentAnimation.endColumn * this->frameHeight) {
+            if (this->source.y > this->currentAnimation.endRow * this->frameHeight) {
                 if (this->currentAnimation.isRepeating) {
-                    this->source.y = 0;
+                    this->source.y = this->currentAnimation.startRow * this->frameHeight;
 
                 } else {
                     this->isFinished = true;
 
-                    this->source.x = this->currentAnimation.endRow * this->frameWidth;
-                    this->source.y = this->currentAnimation.endColumn * this->frameHeight;
+                    this->source.x = this->currentAnimation.endColumn * this->frameWidth;
+                    this->source.y = this->currentAnimation.endRow * this->frameHeight;
                 }
             }
         }
