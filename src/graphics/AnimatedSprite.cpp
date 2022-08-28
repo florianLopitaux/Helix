@@ -18,6 +18,8 @@ Helix::Graphics::AnimatedSprite::AnimatedSprite(const std::string & imagePath,
 
     this->frameWidth = frameWidth;
     this->frameHeight = frameHeight;
+
+    this->isFinished = false;
 }
 
 Helix::Graphics::AnimatedSprite::AnimatedSprite(const std::string & imagePath, const Utils::Vector2D & position,
@@ -45,6 +47,10 @@ std::pair<unsigned, unsigned> Helix::Graphics::AnimatedSprite::getFrameSize() co
     return std::make_pair(this->frameWidth, this->frameHeight);
 }
 
+bool Helix::Graphics::AnimatedSprite::isAnimationFinished() const {
+    return this->isFinished;
+}
+
 
 // METHODS
 void Helix::Graphics::AnimatedSprite::addNewAnimation(const std::string & name,
@@ -64,6 +70,7 @@ void Helix::Graphics::AnimatedSprite::launchAnimation(const std::string & animat
     }
 
     this->currentAnimation = animations[animationName];
+    this->isFinished = false;
 
     this->source.x = this->currentAnimation.startRow * this->frameWidth;
     this->source.y = this->currentAnimation.startColumn * this->frameHeight;
@@ -87,6 +94,8 @@ void Helix::Graphics::AnimatedSprite::update() {
                     this->source.y = 0;
 
                 } else {
+                    this->isFinished = true;
+
                     this->source.x = this->currentAnimation.endRow * this->frameWidth;
                     this->source.y = this->currentAnimation.endColumn * this->frameHeight;
                 }

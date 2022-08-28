@@ -25,6 +25,7 @@ namespace Helix {
                 std::map<std::string, Animation> animations;
                 Animation currentAnimation;
                 Uint32 currentFrameTime;
+                bool isFinished;
 
             public:
                 // CONSTRUCTORS
@@ -37,6 +38,8 @@ namespace Helix {
                 unsigned getFrameWidth() const;
                 unsigned getFrameHeight() const;
                 std::pair<unsigned, unsigned> getFrameSize() const;
+
+                bool isAnimationFinished() const;
 
                 // METHODS
                 void addNewAnimation(const std::string & name, const Animation & animation);
