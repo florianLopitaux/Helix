@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "src/Helix.h"
+#include "../src/Helix.h"
 #include "SDL_image.h"
 
 
