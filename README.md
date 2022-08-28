@@ -10,4 +10,4 @@ Many functions and long algorithms that we had to write with the SDL2 are replac
 
 
 To illustrate how **Helix** works and most of these features, I create templates project that used **Helix**.
-The templates code are at the root of the repository and the executable are in the *'bin'* folder.
+The templates code are in the *'templates'* folder of the repository and the executable are in the *'bin'* folder.
