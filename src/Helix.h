@@ -22,6 +22,11 @@ namespace Helix {
 
     bool hlx_isKeyDown(const SDL_Keycode & key);
     bool hlx_isKeyUp(const SDL_Keycode & key);
+    bool hlx_isMouseButtonDown(const int buttonFlag);
+    bool hlx_isMouseButtonUp(const int buttonFlag);
+
+    Utils::Vector2D hlx_getMousePosition();
+
 
     // GRAPHIC FUNCTIONS
     namespace Graphics {

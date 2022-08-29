@@ -25,6 +25,19 @@ int main(int argc, char *argv[]) {
             std::cout << "The 'b' key is up !" << std::endl;
         }
 
+        if (Helix::hlx_isMouseButtonDown(SDL_BUTTON_LEFT)) {
+            std::cout << "left button is down !" << std::endl;
+        }
+        if (Helix::hlx_isMouseButtonDown(SDL_BUTTON_RIGHT)) {
+            std::cout << "right button is down !" << std::endl;
+        }
+        if (Helix::hlx_isMouseButtonUp(SDL_BUTTON_LEFT)) {
+            std::cout << "left button is up !" << std::endl;
+        }
+        if (Helix::hlx_isMouseButtonUp(SDL_BUTTON_RIGHT)) {
+            std::cout << "right button is up !" << std::endl;
+        }
+
         // Update background
         background.setX(background.getX() - 3);
 

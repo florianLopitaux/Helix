@@ -10,8 +10,10 @@
 // FIELDS
 SDL_Window *window;
 SDL_Renderer *renderer;
+
 Uint32 oldSDL_GetTicks;
 Uint32 deltaTime;
+
 std::vector<SDL_Event> events;
 std::vector<SDL_Texture*> resources;
 
@@ -128,6 +130,33 @@ bool Helix::hlx_isKeyDown(const SDL_Keycode & key) {
 bool Helix::hlx_isKeyUp(const SDL_Keycode & key) {
     for (const SDL_Event & event : events) {
         if (event.type == SDL_KEYUP && event.key.keysym.sym == key) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+Helix::Utils::Vector2D Helix::hlx_getMousePosition() {
+    int x, y;
+    SDL_GetMouseState(&x, &y);
+
+    return Helix::Utils::Vector2D(x, y);
+}
+
+bool Helix::hlx_isMouseButtonDown(const int buttonFlag) {
+    for (const SDL_Event & event : events) {
+        if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == buttonFlag) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Helix::hlx_isMouseButtonUp(const int buttonFlag) {
+    for (const SDL_Event & event : events) {
+        if (event.type == SDL_MOUSEBUTTONUP && event.button.button == buttonFlag) {
             return true;
         }
     }
