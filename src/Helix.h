@@ -32,8 +32,12 @@ namespace Helix {
     namespace Graphics {
         void setColor(const int red, const int green, const int blue, const int alpha = 255);
         void drawLine(const Utils::Vector2D & pos1, const Utils::Vector2D & pos2);
+
         void drawEmptyRectangle(const Utils::Vector2D & pos, const unsigned width, const unsigned height);
+        void drawEmptyCircle(const Utils::Vector2D & pos, const unsigned radius, const float borderWidth);
+
         void drawFillRectangle(const Utils::Vector2D & pos, const unsigned width, const unsigned height);
+        void drawFillCircle(const Utils::Vector2D & pos, const unsigned radius);
 
         SDL_Texture* loadTexture(const std::string & imagePath);
         void draw(const Sprite & sprite);

@@ -57,8 +57,13 @@ int main(int argc, char *argv[]) {
         Helix::Graphics::setColor(180, 37, 98);
 
         Helix::Graphics::drawLine(Helix::Utils::Vector2D(10, 10), Helix::Utils::Vector2D(630, 470));
+
         Helix::Graphics::drawEmptyRectangle(Helix::Utils::Vector2D(40, 17), 30, 15);
         Helix::Graphics::drawFillRectangle(Helix::Utils::Vector2D(100, 17), 18, 35);
+
+        Helix::Graphics::setColor(20, 10, 230);
+        Helix::Graphics::drawEmptyCircle(Helix::Utils::Vector2D(250, 300), 20, 0.7);
+        Helix::Graphics::drawFillCircle(Helix::Utils::Vector2D(150, 300), 20);
 
         Helix::hlx_endDraw();
     }

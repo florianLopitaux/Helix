@@ -5,6 +5,7 @@
 #include <algorithm>
 
 #include "SDL_image.h"
+#include "utils/MathHelper.h"
 
 
 // FIELDS
@@ -181,20 +182,42 @@ void Helix::Graphics::setColor(const int red, const int green, const int blue, c
     SDL_SetRenderDrawColor(renderer, red, green, blue, alpha);
 }
 
-void Helix::Graphics::drawLine(const Helix::Utils::Vector2D & pos1, const Helix::Utils::Vector2D & pos2) {
+void Helix::Graphics::drawLine(const Utils::Vector2D & pos1, const Utils::Vector2D & pos2) {
     SDL_RenderDrawLine(renderer, pos1.getX(), pos1.getY(), pos2.getX(), pos2.getY());
 }
 
-void Helix::Graphics::drawEmptyRectangle(const Helix::Utils::Vector2D & pos, const unsigned width, const unsigned height) {
+void Helix::Graphics::drawEmptyRectangle(const Utils::Vector2D & pos, const unsigned width, const unsigned height) {
     SDL_Rect rect = {pos.getX(), pos.getY(), (int)width, (int)height};
 
     SDL_RenderDrawRect(renderer, &rect);
 }
 
-void Helix::Graphics::drawFillRectangle(const Helix::Utils::Vector2D & pos, const unsigned width, const unsigned height) {
+void Helix::Graphics::drawEmptyCircle(const Utils::Vector2D & pos, const unsigned radius, const float borderWidth) {
+    for (int column = pos.getX() - radius; column <= pos.getX() + radius; ++column) {
+        for (int row = pos.getY() - radius; row <= pos.getY() + radius; ++row) {
+            
+            if (abs(Utils::euclideanDistance(pos, Utils::Vector2D(column, row)) - radius) <= borderWidth) {
+                SDL_RenderDrawPoint(renderer, column, row);
+            }
+        }
+    }
+}
+
+void Helix::Graphics::drawFillRectangle(const Utils::Vector2D & pos, const unsigned width, const unsigned height) {
     SDL_Rect rect = {pos.getX(), pos.getY(), (int)width, (int)height};
 
     SDL_RenderFillRect(renderer, &rect);
+}
+
+void Helix::Graphics::drawFillCircle(const Utils::Vector2D & pos, const unsigned radius) {
+    for (int column = pos.getX() - radius; column <= pos.getX() + radius; ++column) {
+        for (int row = pos.getY() - radius; row <= pos.getY() + radius; ++row) {
+            
+            if (Utils::euclideanDistance(pos, Utils::Vector2D(column, row)) <= radius) {
+                SDL_RenderDrawPoint(renderer, column, row);
+            }
+        }
+    }
 }
 
 SDL_Texture* Helix::Graphics::loadTexture(const std::string & imagePath) {
@@ -213,7 +236,7 @@ SDL_Texture* Helix::Graphics::loadTexture(const std::string & imagePath) {
     return texture;
 }
 
-void Helix::Graphics::draw(const Helix::Graphics::Sprite & sprite) {
+void Helix::Graphics::draw(const Sprite & sprite) {
     SDL_Rect rectDest = {sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight()};
 
     if (SDL_RenderCopy(renderer, sprite.getTexture(), NULL, &rectDest) != 0) {
@@ -222,7 +245,7 @@ void Helix::Graphics::draw(const Helix::Graphics::Sprite & sprite) {
     }
 }
 
-void Helix::Graphics::drawSquad(const Helix::Graphics::AnimatedSprite & sprite) {
+void Helix::Graphics::drawSquad(const AnimatedSprite & sprite) {
     SDL_Rect rectDest = {sprite.getX(), sprite.getY(), (int)sprite.getFrameWidth(), (int)sprite.getFrameHeight()};
 
     if (SDL_RenderCopy(renderer, sprite.getTexture(), &sprite.getCurrentSprite(), &rectDest) != 0) {
