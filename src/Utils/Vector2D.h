@@ -29,7 +29,9 @@ namespace Helix {
 
                 // MEMBER OPERATORS OVERLOADING
                 Vector2D operator+(const Vector2D & vector) const;
+                Vector2D operator+=(const Vector2D & vector);
                 Vector2D operator-(const Vector2D & vector) const;
+                Vector2D operator-=(const Vector2D & vector);
 
                 // METHODS
                 int norm() const;

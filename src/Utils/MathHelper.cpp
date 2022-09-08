@@ -9,7 +9,7 @@ float Helix::Utils::distance(const Vector2D & pos1, const Vector2D & pos2,
     const int distanceX = pow(abs((int)coefX * (pos1.getX() - pos2.getX())), exponent);
     const int distanceY = pow(abs((int)coefY * (pos1.getY() - pos2.getY())), exponent);
 
-    return pow(distanceX + distanceY, 1/exponent);
+    return pow(distanceX + distanceY, 1/(float)exponent);
 }
 
 

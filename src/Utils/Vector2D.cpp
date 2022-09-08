@@ -49,8 +49,16 @@ Helix::Utils::Vector2D Helix::Utils::Vector2D::operator+(const Helix::Utils::Vec
     return Helix::Utils::Vector2D(this->x + vector.getX(), this->y + vector.getY());
 }
 
+Helix::Utils::Vector2D Helix::Utils::Vector2D::operator+=(const Vector2D & vector) {
+    return *this + vector;
+}
+
 Helix::Utils::Vector2D Helix::Utils::Vector2D::operator-(const Helix::Utils::Vector2D & vector) const {
     return Helix::Utils::Vector2D(this->x - vector.getX(), this->y - vector.getY());
+}
+
+Helix::Utils::Vector2D Helix::Utils::Vector2D::operator-=(const Helix::Utils::Vector2D & vector) {
+    return *this - vector;
 }
 
 Helix::Utils::Vector2D Helix::Utils::operator*(const int k, const Helix::Utils::Vector2D & vector) {

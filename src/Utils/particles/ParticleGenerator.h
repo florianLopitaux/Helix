@@ -3,7 +3,6 @@
 
 #include <vector>
 
-#include "../Vector2D.h"
 #include "Particle.h"
 
 
@@ -19,7 +18,7 @@ namespace Helix {
                 ParticleGenerator();
 
                 // METHODS
-                
+
         };
     }   
 }
