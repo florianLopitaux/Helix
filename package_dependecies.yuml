@@ -1,0 +1,12 @@
+// Copyright (C) 2023 Florian Lopitaux
+// This file is part of Helix: https://github.com/florianLopitaux/Helix
+// Use of this software is governed by the GNU Public License, version 3.
+//
+// Description of the package dependencies.
+// Copy/Paste the following lines in: <https://yuml.me/diagram/plain/class/draw>
+//
+// Legend:
+//   [package]
+//   '>' means 'requires'
+
+[helix]
