@@ -1,3 +1,12 @@
+/**
+ * @file Vector2D.cpp
+ * @author Florian LOPITAUX
+ * @brief This file contains the Vector2D class implementation.
+ * @version 1.0
+ * @date 2023
+ * @copyright GNU public License
+*/
+
 #include "../../include/mathUtils/Vector2D.h"
 
 #include <math.h>
@@ -8,6 +17,7 @@
 * CONSTRUCTORS
 * ---------------------------------------------
 */
+
 nsHelix::nsMathUtils::Vector2D::Vector2D() {
     this->x = 0;
     this->y = 0;
@@ -29,6 +39,7 @@ nsHelix::nsMathUtils::Vector2D::Vector2D(const std::pair<int, int> & coordinates
 * GETTERS
 * ---------------------------------------------
 */
+
 int nsHelix::nsMathUtils::Vector2D::getX() const {
     return this->x;
 }
@@ -47,6 +58,7 @@ std::pair<int, int> nsHelix::nsMathUtils::Vector2D::getCoordinates() const {
 * SETTERS
 * ---------------------------------------------
 */
+
 void nsHelix::nsMathUtils::Vector2D::setX(const int x) {
     this->x = x;
 }
@@ -71,6 +83,7 @@ void nsHelix::nsMathUtils::Vector2D::setCoordinates(const std::pair<int, int> & 
 * PUBLIC METHODS
 * ---------------------------------------------
 */
+
 double nsHelix::nsMathUtils::Vector2D::norm() const {
     return sqrt(pow(this->x, 2) + pow(this->y, 2));
 }
@@ -90,6 +103,7 @@ nsHelix::nsMathUtils::Vector2D & nsHelix::nsMathUtils::Vector2D::normalize() {
 * OPERATORS OVERLOADED
 * ---------------------------------------------
 */
+
 nsHelix::nsMathUtils::Vector2D nsHelix::nsMathUtils::Vector2D::operator+(const Vector2D & other) const {
     const int x = this->x + other.x;
     const int y = this->y + other.y;
@@ -147,6 +161,7 @@ std::ostream & nsHelix::nsMathUtils::operator<<(std::ostream & stream, const nsH
 * STATIC METHODS
 * ---------------------------------------------
 */
+
 double nsHelix::nsMathUtils::Vector2D::angleBetween(const Vector2D & v1, const Vector2D & v2) {
     const int topNumber = v1.x*v2.x + v1.y*v2.y;
     const double bottomNumber = v1.norm() * v2.norm();
