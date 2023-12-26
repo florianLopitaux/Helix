@@ -30,10 +30,15 @@ namespace nsHelix {
          * @brief Class to manipulate 2 dimensional vectors (x and y) in orthogonal plan.
         */
         class Vector2D {
+
             private:
                 // FIELDS
+                /** @brief The abscissa value. */
                 int x;
+
+                /** @brief The ordinate value. */
                 int y;
+
 
 
             public:
@@ -225,7 +230,7 @@ namespace nsHelix {
         };
 
         /**
-         * ToString function for vector objects.
+         * ToString function for Vector2D objects.
          * Send to the stream a string format of a vector object.
          * 
          * @param stream The stream to add the string format object

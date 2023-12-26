@@ -1,3 +1,12 @@
+/**
+ * @file BoxCollider.cpp
+ * @author Florian LOPITAUX
+ * @brief This file contains the BoxCollider class implementation.
+ * @version 1.0
+ * @date 2023
+ * @copyright GNU public License
+*/
+
 #include "../../include/mathUtils/BoxCollider.h"
 
 
@@ -6,6 +15,7 @@
 * CONSTRUCTORS
 * ---------------------------------------------
 */
+
 nsHelix::nsMathUtils::BoxCollider::BoxCollider() {}
 
 nsHelix::nsMathUtils::BoxCollider::BoxCollider(const Vector2D & origin, const Vector2D & size) {
@@ -24,6 +34,7 @@ nsHelix::nsMathUtils::BoxCollider::BoxCollider(const int x, const int y, const u
 * GETTERS
 * ---------------------------------------------
 */
+
 int nsHelix::nsMathUtils::BoxCollider::getX() const {
     return this->origin.getX();
 }
@@ -54,6 +65,7 @@ nsHelix::nsMathUtils::Vector2D nsHelix::nsMathUtils::BoxCollider::getSize() cons
 * SETTERS
 * ---------------------------------------------
 */
+
 void nsHelix::nsMathUtils::BoxCollider::setX(const int x) {
     this->origin.setX(x);
 }
@@ -94,6 +106,7 @@ void nsHelix::nsMathUtils::BoxCollider::setSize(const Vector2D & size) {
 * PUBLIC METHODS
 * ---------------------------------------------
 */
+
 bool nsHelix::nsMathUtils::BoxCollider::isCollideWith(const BoxCollider & other) const {
     return this->origin.getX() < other.getX() + other.getWidth() &&
         this->origin.getX() + this->size.getX() >= other.getX() &&
@@ -107,6 +120,7 @@ bool nsHelix::nsMathUtils::BoxCollider::isCollideWith(const BoxCollider & other)
 * OPERATORS OVERLOADED
 * ---------------------------------------------
 */
+
 std::ostream & nsHelix::nsMathUtils::operator<<(std::ostream & stream, const nsHelix::nsMathUtils::BoxCollider & rect) {
     stream << "BoxCollider(" << rect.getX() << ',' << rect.getY() << ',' << rect.getWidth() << ',' << rect.getHeight() << ')';
     return stream;
