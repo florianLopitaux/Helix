@@ -177,6 +177,7 @@ namespace nsHelix {
                 // PUBLIC METHODS
                 /**
                  * Check if this box collides with an other box.
+                 * The method used is the AABB (Axis-Aligned Bounding Box) algorithm.
                  * 
                  * @param other The other box to check if they collide
                  * 

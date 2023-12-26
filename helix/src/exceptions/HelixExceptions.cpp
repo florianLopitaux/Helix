@@ -1,3 +1,12 @@
+/**
+ * @file HelixExceptions.cpp
+ * @author Florian LOPITAUX
+ * @brief This file contains many custom exceptions classes implementation.
+ * @version 1.0
+ * @date 2023
+ * @copyright GNU public License
+*/
+
 #include "../../include/exceptions/HelixExceptions.h"
 
 
@@ -59,9 +68,8 @@ nsHelix::nsExceptions::IndexOutOfBoundsException::IndexOutOfBoundsException(cons
     : arrayName(arrayName), value(value), maxValue(maxValue) {} 
 
 const char * nsHelix::nsExceptions::IndexOutOfBoundsException::what() {
-    const std::string msg = "Exception thrown because we try to access to the '" + this->arrayName +
-        "' array with an index (" + std::to_string(this->value) + ") which is out of bounds. "
-        "(array size = " + std::to_string(this->maxValue) + ')';
+    const std::string msg = "Exception thrown because we try to access to the '" + this->arrayName + "' array with the index (" +
+        std::to_string(this->value) + ") which is out of bounds. (array size = " + std::to_string(this->maxValue) + ')';
     
     return msg.c_str();
 }
