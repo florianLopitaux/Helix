@@ -37,8 +37,6 @@ namespace nsHelix {
 
 
                 // STATIC METHODS
-                static Vector2D zero();
-                static Vector2D null();
                 static double angleBetween(const Vector2D & v1, const Vector2D & v2);
 
 

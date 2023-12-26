@@ -147,14 +147,6 @@ std::ostream & nsHelix::nsMathUtils::operator<<(std::ostream & stream, const nsH
 * STATIC METHODS
 * ---------------------------------------------
 */
-nsHelix::nsMathUtils::Vector2D nsHelix::nsMathUtils::Vector2D::zero() {
-    return Vector2D(0, 0);
-}
-
-nsHelix::nsMathUtils::Vector2D nsHelix::nsMathUtils::Vector2D::null() {
-    return Vector2D(1, 1);
-}
-
 double nsHelix::nsMathUtils::Vector2D::angleBetween(const Vector2D & v1, const Vector2D & v2) {
     const int topNumber = v1.x*v2.x + v1.y*v2.y;
     const double bottomNumber = v1.norm() * v2.norm();
