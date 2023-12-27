@@ -31,6 +31,14 @@ nsHelix::nsGraphics::RenderManager::RenderManager(SDL_Window *window) {
         const std::string sdlError = SDL_GetError();
         throw nsExceptions::HelixInitializationException("The renderer cannot be created.\nSDL error : " + sdlError);
     }
+
+    // SDL image initialization
+    if (!IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG)) {
+        SDL_DestroyWindow(window);
+
+        const std::string sdlError = IMG_GetError();
+        throw nsExceptions::HelixInitializationException("SDL_Image couldn't initialize.\nSDL_Image error : " + sdlError);
+    }
 }
 
 nsHelix::nsGraphics::RenderManager::~RenderManager() {
