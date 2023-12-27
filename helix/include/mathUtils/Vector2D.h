@@ -40,7 +40,6 @@ namespace nsHelix {
                 int y;
 
 
-
             public:
                 // CONSTRUCTORS
                 /**

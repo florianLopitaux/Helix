@@ -7,6 +7,9 @@
 //
 // Legend:
 //   [package]
-//   '>' means 'requires'
+//   "[a] < [b]" means "package b requires package a"
 
-[mathUtils] > [helix]
+[exceptions] < [helix]
+[graphics] < [helix]
+[exceptions] < [graphics]
+[mathUtils] < [graphics]

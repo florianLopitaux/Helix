@@ -40,7 +40,6 @@ namespace nsHelix {
                 Vector2D size;
 
 
-
             public:
                 // CONSTRUCTORS
                 /**
